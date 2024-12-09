@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class = "h-full bg-white">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registration Page</title>
+        <link rel="stylesheet" href="../src/output.css">
+
+    </head>
+
+    <body class = "h-full">
+    <main class = "h-full">
+        <form class = "justify-items-center h-full">
+            <div class = "py-24 space-y-10 h-full">
+                <label>
+                    <span class = "block text-black text-lg font-bold text-center"> Create an account </span>
+                    <div class = "grid grid-cols-2 gap-2">
+                        <span class = "block text-black text-sm text-right"> Already have an account? </span>
+                        <a class = "block text-indigo-600 hover:text-indigo-500 text-sm underline text-center" href = "../pages/authorization_page.html" > Sign in! </a>
+                    </div>
+                </label>
+                <div class = "grid grid-cols-2 gap-5">
+                    <input placeholder="Name" class = "rounded-md px-3 outline-gray-300 border border-black">
+                    <input placeholder="Last name" class = "rounded-md px-3 outline-gray-300 border border-black">
+                </div>
+                <div class = "container">
+                    <input placeholder="Email" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
+                </div>
+                <div class = "container">
+                    <input placeholder="Password" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
+                </div>
+                <div class = "container flex flex-col justify-items-center">
+                    <button class = "bg-indigo-600 hover:bg-indigo-500 w-24 h-12 rounded-lg text-white text-center mx-auto" > Register! </button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </main>
+    </body>
+</html>
