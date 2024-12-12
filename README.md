@@ -1,154 +1,59 @@
-# Minilab224 task
-## Variant 1
+# Проект Shopping List
 
-# Unsplash & Jokes API Aggregator
+## Краткое описание
 
-## Project Overview
+На данный момент в приложении реализованы html 
+страницы регистрации и авторизации. 
 
-This application provides endpoints for fetching random photos and paginated photos from Unsplash, as well as random jokes from the Official Joke API. The service is built using Python and FastAPI, designed to handle API integration seamlessly.
+Нажатие на кнопку submit напрямую отправляет запрос на backend 
+сервер, то бишь реализована какая никакая связь между frontend и 
+backend.
 
-## Features
+Интерфейс реализован с помощью tailwindcss + html + javascript, 
+бэкенд реализован с помощью Node.js
 
-- Fetch a random photo from Unsplash.
-- Retrieve a page of Unsplash photos.
-- Get a random joke from the Official Joke API.
+## Реализация функционала
+В ходе создания приложения пришлось познакомиться с множеством разных аспектов работы с вебом, 
+ибо все "кирпичики", из которых сложилось приложение, были изучены и реализованы с полного нуля.
 
----
+Стили страницы регистрации и авторизации были реализованы не с помощью легковесной
+библиотеки стилей materialize, как в минилабе, а с помощью довольно мощной и популярной библиотеки
+стилей tailwindcss. В то же время, и сам html файл был создан с полного нуля с целью более глубокого изучения
+верстки. То бишь, не был использован шаблон, показанный в минилабе1.
 
-## API Endpoints Documentation
+Бэкенд также был реализован с нуля с помощью Node.js, а не Python, как в минилабе2. 
+Никакие изначально данные шаблоны не были использованы, то бишь весь материал изучался с нуля.
+Потребовалось познакомиться с типами запросов и их отличиями, с CORS для установления связи между серверами фронта и бэка, а 
+также с базовой обработкой данных через JSON.parse() и JSON.stringify()
 
-### Unsplash Endpoints
+Фронтэнд также реализован с нуля, то бишь потребовалось самому изучить способы работы с DOM, 
+саму его структуру, способы отправки запросов с бэка на фронт, разобраться с Promise.
 
-#### 1. `GET /random`
-Fetches a random photo from Unsplash.
+## Функционал 
+На данный момент связь фронта и бэка ограничивается передачей данных и проверкой на то, что эта передача вообще
+работает: в случае с формой регистрации данные логируются в консоль, а в случае с формой авторизации проверяется проверка
+введенного емейла на соответствие определенному.
 
-- **URL**: `/random`
-- **Method**: GET
-- **Response**:
-  - Success (200):
-    ```json
-    {
-        "id": "photo_id",
-        "created_at": "2024-01-01T00:00:00Z",
-        "urls": {
-            "full": "photo_url",
-            "regular": "photo_url"
-        },
-        "user": {
-            "name": "Photographer Name"
-        }
-    }
-    ```
-  - Unauthorized (401):
-    ```json
-    {
-        "status": 401,
-        "message": "Ай-ай-ай, неверный токен авторизации!"
-    }
-    ```
+### Форма авторизации
+![img.png](img.png)
+### Форма регистрации
+![img_1.png](img_1.png)
+### Голый index.html
+![img_2.png](img_2.png)
+### Демонстрация передачи данных на бэк с фронта(регистрация)
+![img_3.png](img_3.png)
+### Демонстрация валидации данных при передаче данных на бэк с фронта(авторизация)
+![img_4.png](img_4.png)
 
-#### 2. `GET /photos`
-Fetches a paginated list of photos from Unsplash.
+### Потенциальные улучшения
+На данный момент не реализовано очень много функционала и в первую очередь это связано с тем, что мы с Евгением Диденко, с 
+которым мы в группе, стараемся досконально разобраться в том, что пишем и зачем.
 
-- **URL**: `/photos`
-- **Method**: GET
-- **Response**:
-  - Success (200): Array of photo objects similar to `/random`.
-  - Unauthorized (401): Same as `/random`.
+Потенциально же можно реализовать следующее:
+1. Доделать бэк и реализовать работу с бд
+2. Разобраться с RegEx и реализовать собственную валидацию
+3. Достилизовать index.html и сделать функционал самого приложения
 
----
-
-### Jokes Endpoints
-
-#### 3. `GET /random`
-Fetches a random joke.
-
-- **URL**: `/random`
-- **Method**: GET
-- **Response**:
-  - Success (200):
-    ```json
-    {
-        "type": "general",
-        "setup": "Why don't skeletons fight each other?",
-        "punchline": "They don't have the guts."
-    }
-    ```
-  - Unauthorized (401):
-    ```json
-    {
-        "status": 401,
-        "message": "Ай-ай-ай, неверный токен авторизации!"
-    }
-    ```
-
----
-
-## Installation and Configuration
-The app was tested using Python 3.9.13 and packages from requirements.txt
-
-### Prerequisites
-
-1. **Python 3.9.13**
-2. **pip** package manager
-3. **FastAPI and dependencies** installed (see below)
-
-### Steps
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/vorogurcov/minilab2
-    cd your-repository
-    ```
-
-2. Create virtual environment inside backend folder:
-    ```bash
-    cd backend
-    py -m venv venv
-    ```
-    
-3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4. Run the main.py from the root of the project:
-    ```bash
-    cd .. #if you are in backend folder
-    py backend/main.py
-    ```
-
-5. Access the API Swagger UI at:
-    - [http://127.0.0.1:5000/docs](http://127.0.0.1:8000/docs)
-
----
-
-## Application Logic
-
-1. **Unsplash API Integration**:
-   - The `GET /random` endpoint fetches a random photo from Unsplash using the `/photos/random` endpoint of Unsplash's API.
-   - The `GET /photos` endpoint retrieves a page of photos from Unsplash's `/photos` endpoint.
-   - Both endpoints use the `client_id` as authentication, which must be provided as an environment variable (`UNSPLASH_API_TOKEN`).
-
-2. **Joke API Integration**:
-   - The `GET /random` endpoint interacts with the Official Joke API to fetch a random joke.
-
----
-
-## Postman Workspace
-
-A Postman workspace has been created to demonstrate the API functionality. It includes the following:
-
-1. Pre-configured environment variables:
-    - `{{base_url}}` for the local server URL.
-    - `{{unsplash_api_token}}` for the Unsplash API token.
-    - `{{URL_PREFIX}}` for the predefined '/api/v1' path
-2. Requests for each endpoint:
-    - `GET /random` (Unsplash)
-    - `GET /photos` (Unsplash)
-    - `GET /random` (Jokes)
-
-**Access the Postman workspace here**: [Postman Workspace Link](https://www.postman.com/spaceflight-geologist-43185237/minilab2)
-To properly use it choose the Local API environment
----
-
+### Напоследок
+Мы постараемся сделать доделать и доусложнять данный сайт по мере наших возможностей к моменту выступления на зачете. Пока не очень понятно, будет ли возможность его доделывать и досдавать в следующем семестре,
+раз уж было так мало времени для реализации.
