@@ -36,21 +36,21 @@ backend.
 
 
 ### Форма авторизации
-![img.png](img.png)
+![img.png](readme_images/img.png)
 ### Форма регистрации
-![img_1.png](img_1.png)
+![img_1.png](readme_images/img_1.png)
 ### Голый index.html
-![img_2.png](img_2.png)
+![img_2.png](readme_images/img_2.png)
 ### Демонстрация передачи данных на бэк с фронта(регистрация)
-![img_3.png](img_3.png)
+![img_3.png](readme_images/img_3.png)
 ### Демонстрация валидации данных при передаче данных на бэк с фронта(авторизация)
-![img_4.png](img_4.png)
+![img_4.png](readme_images/img_4.png)
 ### Демонстрация изначальной валидации данных на странице авторизации
-![img_5.png](img_5.png)
+![img_5.png](readme_images/img_5.png)
 ### Демонстрация изначальной валидации данных на странице регистрации
-![img_6.png](img_6.png)
+![img_6.png](readme_images/img_6.png)
 ### Демонстрация корректно заполненной формы
-![img_7.png](img_7.png)
+![img_7.png](readme_images/img_7.png)
 
 ### Потенциальные улучшения
 На данный момент не реализовано очень много функционала и в первую очередь это связано с тем, что мы с Евгением Диденко, с 
