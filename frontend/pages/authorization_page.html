@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authorization Page</title>
     <link rel="stylesheet" href="../src/output.css">
-    <script src = "./pages_js/auth.js" defer> </script>
+    <script src = "./pages_js/auth.js" defer > </script>
+    <script src = "./pages_js/validate_auth.js" type="module" defer> </script>
 </head>
 
 <body class = "h-full">
 <main class = "h-full">
-    <form class = "justify-items-center h-full">
+    <form class = "justify-items-center h-full" id = "auth_form">
         <div class = "py-24 space-y-10 h-full">
             <label>
                 <span class = "block text-black text-lg font-bold text-center"> Sign up </span>
@@ -20,13 +21,13 @@
                 </div>
             </label>
             <div class = "container">
-                <input type = "email" placeholder="Email" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
+                <input id="email" type = "email" placeholder="Email" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
             </div>
             <div class = "container">
-                <input type ="password" placeholder="Password" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
+                <input id="password" type ="password" placeholder="Password" class = "rounded-md px-3 outline-gray-300 border border-black min-w-full">
             </div>
             <div class = "container flex flex-col justify-items-center">
-                <button class = "bg-indigo-600 hover:bg-indigo-500 w-24 h-12 rounded-lg text-white text-center mx-auto" id = "sgn_btn" > Sign up! </button>
+                <button class = "bg-indigo-600 hover:bg-indigo-500 w-24 h-12 rounded-lg text-white text-center mx-auto disabled:bg-gray-500" id = "sgn_btn" disabled> Sign up! </button>
             </div>
 
         </div>
