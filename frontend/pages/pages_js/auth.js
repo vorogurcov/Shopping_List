@@ -11,7 +11,7 @@ const form_data_map = () =>{
 }
 
 const make_reg_request = async (data) => {
-    const url = "http://localhost:3000/signup";
+    const url = "http://localhost:3000/api/signup";
     try {
         const response = await fetch(url, {
             mode: 'cors',
