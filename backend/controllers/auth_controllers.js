@@ -13,7 +13,7 @@ exports.register_user = asyncHandler(async (req, res) => {
 
         const result = await pool.query(query);
 
-        res.status(200).json({ message: "Registration successful" });
+        res.status(200).json({ message: "Registration successful" , redirect: 'authorization_page.html'});
     } catch (error) {
         console.log("Error during user registration:", error.message);
         res.status(500).json({ message: "Internal Server Error" });
@@ -31,18 +31,12 @@ exports.signup_user = asyncHandler(async (req, res) => {
             values: values,
         };
 
-        console.log(query);
-
-
         const result = await pool.query(query);
 
-
         if (result.rows.length > 0) {
-            res.status(200).json({ message: "All good!" });
-            console.log("All good!");
+            res.status(200).json({ message: "User exists",redirect:'/src/index.html' });
         } else {
-            res.status(400).json({ message: "Everything bad!" });
-            console.log("Everything bad!");
+            res.status(400).json({ message: "User does not exist!" });
         }
     } catch (error) {
         console.error("Database query error:", error.message);
