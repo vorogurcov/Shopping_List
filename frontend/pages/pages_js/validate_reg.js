@@ -10,6 +10,12 @@ export const validateForm = () => {
             button.disabled = true;
             return;
         }
+        else if (inputs[index].classList.contains("valid"))
+            continue;
+        else {
+            button.disabled = true;
+            return;
+        }
     }
     button.disabled = false;
 }
