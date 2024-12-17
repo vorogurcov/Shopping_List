@@ -13,20 +13,23 @@ const form_data_map = () =>{
 const make_reg_request = async (data) => {
     const url = "http://localhost:3000/api/signup";
     try {
-        const response = await fetch(url, {
+        await fetch(url, {
             mode: 'cors',
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(Object.fromEntries(data)),
-        });
-        console.log("asdasda");
-        if(!response.ok) {
-            throw new Error(`Response status:  ${response.status}$`);
-        }
-        const json = await response.json();
-        console.log(json);
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                } else {
+                    console.log(data.message);
+                }
+            });
+
     }
     catch (error) {
         console.log(error.message);
@@ -38,7 +41,8 @@ const send_sign_data = async () => {
     await make_reg_request(data_map);
 }
 
-const sgn_btn_pressed = async () => {
+const sgn_btn_pressed = async (event) => {
+    event.preventDefault();
     await send_sign_data();
 }
 
