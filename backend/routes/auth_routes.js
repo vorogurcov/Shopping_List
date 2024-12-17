@@ -1,22 +1,10 @@
 const express = require("express");
+const auth_controllers = require("../controllers/auth_controllers.js")
 
 const authRoute = new express.Router();
 
-authRoute.post("/register", (req, res) => {
-    console.log(req.body); // Log the request body
-    res.status(200).json({ message: "Registration successful" }); // Return JSON response
-});
+authRoute.post("/register",auth_controllers.register_user);
 
-authRoute.post("/signup", (req,res) =>{
-
-    if(req.body.Email == 'ya@a.ru'){
-        res.status(200).json({message: "All good!"});
-        console.log("All good!");
-    }
-
-    else
-        res.status(2000).json({message: "Everything bad!"});
-
-})
+authRoute.post("/signup",auth_controllers.signup_user)
 
 module.exports = authRoute;
