@@ -2,7 +2,7 @@ const User = require("../models/User");
 const asyncHandler = require("express-async-handler");
 const pool = require("../config/db.js");
 
-exports.register_user = asyncHandler((req, res) => {
+exports.register_user = asyncHandler(async (req, res) => {
     try {
         let values = Object.values(req.body);
 
@@ -11,11 +11,11 @@ exports.register_user = asyncHandler((req, res) => {
             values: values,
         };
 
-        const result = pool.query(query);
+        const result = await pool.query(query);
 
         res.status(200).json({ message: "Registration successful" });
     } catch (error) {
-        console.error("Error during user registration:", error.message);
+        console.log("Error during user registration:", error.message);
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
