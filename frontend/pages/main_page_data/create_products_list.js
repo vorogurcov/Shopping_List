@@ -9,13 +9,13 @@ const create_product_el = (product) =>{
     product_info.className = "grid grid-rows-3 space-x-2"
 
     let product_price = document.createElement('p');
-    product_price.textContent = "Price:\n" + product["product_price"]
+    product_price.textContent = "Price:" + product["product_price"]
 
     let product_creator = document.createElement('p');
-    product_creator.textContent = "Created by:\n" + product["product_creator"];
+    product_creator.textContent = "Created by:" + product["product_creator"];
 
     let product_name = document.createElement('p');
-    product_name.textContent = "Product:\n" + product["product_name"];
+    product_name.textContent = "Product:" + product["product_name"];
 
     product_info.appendChild(product_name);
     product_info.appendChild(product_creator);
@@ -37,7 +37,7 @@ const create_product_el = (product) =>{
 export function create_products_list(products){
     //products is JSON object of 10 JSON objects
     let products_list = [];
-    Object.values(products).forEach((product) =>{
+    products.forEach((product) =>{
         products_list.push(create_product_el(product));
     })
     return products_list;
