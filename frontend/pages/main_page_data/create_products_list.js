@@ -1,6 +1,6 @@
 const create_product_el = (product) =>{
     let product_el = document.createElement("div");
-    product_el.className = "grid grid-cols-4";
+    product_el.className = "grid grid-cols-4 divide-x-2 border-2";
 
     let product_picture = document.createElement("img");
     product_picture.src = product["product_image"];
