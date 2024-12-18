@@ -34,7 +34,7 @@ exports.signup_user = asyncHandler(async (req, res) => {
         const result = await pool.query(query);
 
         if (result.rows.length > 0) {
-            res.status(200).json({ message: "User exists",redirect:'/src/index.html' });
+            res.status(200).json({ message: "User exists",redirect:'/pages/main_page.html' });
         } else {
             res.status(400).json({ message: "User does not exist!" });
         }
