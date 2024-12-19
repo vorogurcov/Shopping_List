@@ -19,6 +19,7 @@ const make_reg_request = async (data) => {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials:'include',
             body: JSON.stringify(Object.fromEntries(data)),
         })
             .then(response => response.json())

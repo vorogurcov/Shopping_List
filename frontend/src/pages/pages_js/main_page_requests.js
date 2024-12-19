@@ -8,6 +8,7 @@ export async function get_products(page_number = 0){
                 "Content-Type":"application/json",
             },
             body:JSON.stringify({page:page_number}),
+            credentials: 'include',
         })
 
         const data = await response.json();
