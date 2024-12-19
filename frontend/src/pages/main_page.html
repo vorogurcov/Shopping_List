@@ -2,9 +2,11 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height width=device-width, initial-scale=1" />
     <title>Shopping List application</title>
     <link href = "../output.css" rel = "stylesheet">
     <script src="pages_js/main_page.js" type="module" defer></script>
+    <script src="pages_js/main_page_nextprev.js" type = "module" defer></script>
 </head>
 <body class="space-y-10 ">
     <header class="grid grid-cols-2 w-full divide-x-4 border-4">
@@ -16,11 +18,16 @@
             <button class = "text-2xl">Exit</button>
         </nav>
     </header>
-    <main class="h-full w-full space-y-6 divide-y-4">
+    <main class="h-full w-full space-y-3 divide-y-4 bg-gray-200">
         <h1 class="text-4xl">Shopping list.</h1>
-        <div id="main_shopping_list_container" class="grid grid-rows-10 space-y-4 w-full divide-y-2">
-
+        <div id="main_shopping_list_container" class="grid grid-rows-4 w-full h-full border bg-gray-200">
         </div>
+        <div class="w-full h-full grid grid-cols-8 justify-items-end gap-4">
+            <button class="col-span-1 col-start-6 w-3/4 hover:bg-gray-400" id="prev_btn">Previous page</button>
+            <label class="col-span-1 text-center" id="page_number">Page: 0</label>
+            <button class="col-span-1 w-3/4 hover:bg-gray-400" id="next_btn">Next page</button>
+        </div>
+
     </main>
 </body>
 </html>

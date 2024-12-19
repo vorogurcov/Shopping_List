@@ -6,7 +6,7 @@ exports.get_products = asyncHandler(async (req,res) =>{
     try{
         let values = Object.values(req.body);
         const query = {
-            text:'SELECT * FROM products LIMIT 10 OFFSET (10*$1)',
+            text:'SELECT * FROM products LIMIT 4 OFFSET (4*$1)',
             values: values,
         }
 

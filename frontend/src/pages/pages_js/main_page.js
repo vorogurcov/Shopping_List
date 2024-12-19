@@ -2,7 +2,7 @@ const shopping_list_container = document.getElementById("main_shopping_list_cont
 import {get_products} from './main_page_requests.js';
 import {create_products_list} from "../main_page_data/create_products_list.js";
 
-const get_items = async (page_number = 0)=>{
+export async function get_items(page_number = 0) {
 
     const products = await get_products(page_number);
     console.log(products)
@@ -11,3 +11,4 @@ const get_items = async (page_number = 0)=>{
 }
 
 await get_items();
+
