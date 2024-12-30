@@ -10,7 +10,7 @@ const form_data_map = () =>{
     return data_map
 }
 
-const make_reg_request = async (data) => {
+const make_auth_request = async (data) => {
     const url = "http://localhost:3000/api/signup";
     try {
         await fetch(url, {
@@ -39,7 +39,7 @@ const make_reg_request = async (data) => {
 const send_sign_data = async () => {
     let data_map = form_data_map();
     console.log(data_map);
-    await make_reg_request(data_map);
+    await make_auth_request(data_map);
 }
 
 const sgn_btn_pressed = async (event) => {
