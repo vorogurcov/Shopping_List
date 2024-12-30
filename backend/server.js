@@ -1,12 +1,14 @@
 const express = require("express");
 const authRouter = require("./routes/auth_routes.js");
-const productsRouter = require('./routes/products_routes');
+const productsRouter = require('./routes/products_routes.js');
 const corsOptions = require("./middlewares/cors_middleware.js")
+const cookieParser = require('cookie-parser')
 const app = express();
 const port = 3000;
 
 app.use(corsOptions);
 app.options("*", corsOptions);
+app.use(cookieParser());
 
 app.use(express.json());
 
