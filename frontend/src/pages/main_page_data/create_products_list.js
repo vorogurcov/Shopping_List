@@ -5,8 +5,9 @@ const create_product_el = (product) => {
         "grid grid-cols-4 divide-x-2 border-2 items-center border-y border-black"; // Ensure proper alignment with items-center
 
     // Column 1: Product image
+    let source = "main_page_data\\products_photo\\"
     let product_picture = document.createElement("img");
-    product_picture.src = product["product_image"];
+    product_picture.src = source + product["product_image"];
     product_picture.alt = product["product_name"];
     product_picture.className = "object-cover w-24 h-24 p-2"; // Set consistent size for the image
     product_el.appendChild(product_picture); // Append directly to grid cell 1
