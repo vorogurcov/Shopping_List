@@ -9,6 +9,7 @@ import {PostgresConnectionOptions} from "typeorm/driver/postgres/PostgresConnect
 import {User} from "./entitites/user";
 import {Product} from "./entitites/product";
 import {UserToProduct} from "./entitites/user_to_product";
+import {RedisService} from "../redis/redis.service";
 
 
 
@@ -16,7 +17,7 @@ import {UserToProduct} from "./entitites/user_to_product";
 export class DbService{
     private readonly dbConfig:DatabaseConfig;
     private AppDataSource: DataSource;
-    constructor(private readonly configService:ConfigService){
+    constructor(private readonly configService:ConfigService, private readonly redisService:RedisService){
         this.dbConfig = this.configService.getDbConfig();
         this.dbConfig['synchronize'] = false;
         this.dbConfig['entities'] = [User,UserToProduct,Product];
@@ -56,22 +57,20 @@ export class DbService{
             // const result = await this.pool.query(query);
             // return result.rows.length > 0
 
-            console.log(values);
-            const userExists = await this.AppDataSource.manager.exists(User, {
-                where:{
-                    email:values[0],
-                    password:values[1]
+            const user = await this.AppDataSource.manager.findOne(User, {
+                where: {
+                    email: values[0],
+                    password: values[1]
                 }
-            })
+            });
 
-            console.log(userExists)
-            return userExists;
+            return user;
         }catch(error){
             throw error;
         }
     }
 
-    async getProductsPage(pageObject:{page:number}){
+    async getProductsPage(sessionId: string,pageObject:{page:number}){
         try{
             let values = Object.values(pageObject);
 
@@ -101,10 +100,15 @@ export class DbService{
             //     }
             // }
 
+            //get from cookies
+            const sessionData = JSON.parse(await this.redisService.get(sessionId) ?? '{}');
+
+            if(sessionData === null)
+                throw new Error();
 
             // const user_id = decoded.user_id;
 
-            const user_id = 1;
+            const user_id = sessionData['user_id'];
             values.push(user_id);
 
 

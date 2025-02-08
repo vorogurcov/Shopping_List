@@ -15,7 +15,7 @@ export class User{
 
     @Column({name:'user_name'})
     name:string;
-    @Column({name:'last_name'})
+    @Column({name:'user_last_name'})
     last_name:string;
 
     @Column({name:'user_email'})

@@ -4,9 +4,9 @@ import {DbService} from "../db/db.service";
 export class ProductsService{
 
     constructor(private readonly dbService:DbService){};
-    async getProductsPage(pageObject:{page:number}){
+    async getProductsPage(request,pageObject:{page:number}){
         try {
-            const productsPage = await this.dbService.getProductsPage(pageObject);
+            const productsPage = await this.dbService.getProductsPage(request.cookies['sessionId'], pageObject);
             return productsPage;
         }
         catch(error)
