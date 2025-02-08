@@ -1,5 +1,6 @@
 export interface DatabaseConfig {
-    user: string,
+    type:string,
+    username: string,
     host: string,
     database: string,
     password:  string,

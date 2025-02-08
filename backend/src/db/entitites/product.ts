@@ -1,8 +1,14 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 
-@Entity({name: process.env.DB_NAME})
+@Entity({name: 'products'})
 export class Product{
+    constructor(data?: Partial<Product>) {
+        if (data) {
+            Object.assign(this, data);
+        }
+    }
+
     @PrimaryGeneratedColumn()
     product_id:number;
 
