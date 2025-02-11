@@ -20,7 +20,7 @@ export class DbService{
     constructor(private readonly configService:ConfigService, private readonly redisService:RedisService){
         this.dbConfig = this.configService.getDbConfig();
         this.dbConfig['synchronize'] = false;
-        this.dbConfig['entities'] = [User,UserToProduct,Product];
+        this.dbConfig['entities'] = ["entities/*.js"];
         this.AppDataSource = new DataSource(this.dbConfig as PostgresConnectionOptions);
         this.AppDataSource.initialize();
     }
